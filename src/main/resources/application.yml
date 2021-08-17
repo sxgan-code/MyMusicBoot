@@ -1,0 +1,56 @@
+server:
+  port: 8080    # 端口号
+  servlet:
+    context-path: /music  # 全局虚拟路径
+    session:
+      timeout: 30  # session 超时时间/分钟，默认是30
+  tomcat:
+    uri-encoding: utf-8   # 设置tomcat编码
+#  error:
+#    path: /error.html   # 错误跳转页
+
+
+# spring相关配置
+spring:
+  # mysql 配置
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC
+#    username: root
+#    password: daniel
+  #配置 Oracle
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver   # 固定
+    url: jdbc:oracle:thin:@localhost:1521:orcl  # 按你本地的来，默认的sid为 orcl
+    username: daniel     # 按你本地的来
+    password: daniel     # 按你本地的来
+  # 模板引擎
+  freemarker:
+    cache: true   # 关闭thymeleaf的页面缓存
+  # 热部署配置
+  devtools:
+    restart:
+      #热部署生效
+      enabled: true
+        #设置重启目录
+      additional-paths: src/main/java
+        #classpath目录下的WEB-INF文件夹内容修改不重启
+      exclude: WEB-INF/**
+
+#    restart:
+#     additional-paths: springboot-demo/src/main/java # 设置重启的目录，对那个目录的文件进行修改后需要重启
+#      exclude: static /**   # 设置classpath下 static 目录内容修改后不重启。一般设置为静态资源目录
+###ThymeLeaf配置
+  thymeleaf:
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML5
+    #编码 可不用配置
+    encoding: UTF-8
+    #内容类别,可不用配置
+    servlet:
+      content-type: text/html
+    #开发配置为false,避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates，可以不用配置
+    prefix: classpath:/templates/
+    suffix: .html
