@@ -3,7 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.daniel.mapper.IStudentMapper">
-    <select id="getAllStudent" resultType="com.daniel.domain.Student">
-        SELECT * FROM STUDENT_INFO
+    <resultMap id="stuMap" type="Student">
+        <result property="stuId" column="stuId"/>
+        <result property="stuName" column="stuName"/>
+        <result property="stuAge" column="stuAge"/>
+        <association property="stuSex" column="stuSex" javaType="string" select="getValByCodeNo"/>
+    </resultMap>
+    <select id="getAllStudent" resultMap="stuMap" >
+        SELECT * FROM student_info
+    </select>
+    <select id="getValByCodeNo" parameterType="int" resultType="String">
+        select codevalue from code_library where codeno =#{stuSex}
     </select>
 </mapper>

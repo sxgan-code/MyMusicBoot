@@ -1,60 +1,57 @@
 <template>
   <div id="main-root">
-    <el-table
-        :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-        style="width: 100%">
-      <el-table-column
-          label="Date"
-          prop="date">
-      </el-table-column>
-      <el-table-column
-          label="Name"
-          prop="name">
-      </el-table-column>
-      <el-table-column
-          align="right">
-        <template slot="header" slot-scope="scope">
-          <el-input
-              v-model="search"
-              size="mini"
-              placeholder="输入关键字搜索"/>
-        </template>
-        <template slot-scope="scope">
-          <el-button
-              size="mini"
-              @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-          <el-button
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+      <el-col :span="20">
+        <div class="grid-content bg-purple-light">
+          <el-table
+              :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+              style="width: 100%">
+            <el-table-column
+                label="编号"
+                prop="stuId">
+            </el-table-column>
+            <el-table-column
+                label="名称"
+                prop="stuName">
+            </el-table-column>
+            <el-table-column
+                label="年龄"
+                prop="stuAge">
+            </el-table-column>
+            <el-table-column
+                label="性别"
+                prop="stuSex">
+            </el-table-column>
+            <el-table-column
+                align="right">
+              <template slot="header" slot-scope="scope">
+                <el-input
+                    v-model="search"
+                    size="mini"
+                    placeholder="输入关键字搜索"/>
+              </template>
+              <template slot-scope="scope">
+                <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+                <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-col>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "Main",
   data() {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }],
+      tableData: [],
       search: ''
     }
   },
@@ -64,8 +61,16 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    async initTableData(){
+      const { data:res } = await this.$http.get("/api/studentData");
+      console.log(res)
+      this.tableData = res.data
     }
   },
+  created() {
+    this.initTableData();
+  }
 }
 </script>
 

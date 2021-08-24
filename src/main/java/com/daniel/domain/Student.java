@@ -4,8 +4,7 @@ public class Student {
     private Integer stuId;
     private String stuName;
     private Integer stuAge;
-    private Integer stuSex;
-    
+    private String stuSex;
     public Student() {
     }
     
@@ -33,11 +32,11 @@ public class Student {
         this.stuAge = stuAge;
     }
     
-    public Integer getStuSex() {
+    public String getStuSex() {
         return stuSex;
     }
     
-    public void setStuSex(Integer stuSex) {
+    public void setStuSex(String stuSex) {
         this.stuSex = stuSex;
     }
     
