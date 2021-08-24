@@ -20,10 +20,15 @@ spring:
 #    password: daniel
 
 #      公司
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/daniel?serverTimezone=UTC
+#    username: root
+#    password: root123
+    #      Daniel
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/daniel?serverTimezone=UTC
     username: root
-    password: root123
+    password: daniel
   #配置 Oracle
 #  datasource:
 #    driver-class-name: oracle.jdbc.driver.OracleDriver   # 固定
