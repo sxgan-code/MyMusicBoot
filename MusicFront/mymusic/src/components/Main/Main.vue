@@ -41,13 +41,19 @@
             </el-table-column>
           </el-table>
         </div>
+        <Footer></Footer>
       </el-col>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Footer from "@/components/Footer/Footer";
 export default {
+  components: {
+    Footer
+  },
   name: "Main",
   data() {
     return {
@@ -75,5 +81,9 @@ export default {
 </script>
 
 <style scoped>
-
+#main-root{
+  width: 1281px;
+  position: fixed;
+  right: 0;
+}
 </style>

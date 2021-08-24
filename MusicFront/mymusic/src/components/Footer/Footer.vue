@@ -1,12 +1,6 @@
 <template>
   <div id="footer-root">
-    <el-row>
-      <el-col :span="24">
-        <div class="grid-content bg-purple-dark">
 
-        </div>
-      </el-col>
-    </el-row>
   </div>
 </template>
 
@@ -18,7 +12,12 @@ export default {
 
 <style scoped>
 #footer-root{
-  height: 50px;
-  background-color: dimgray;
+  height: 61px;
+  width: 1281px;
+  background-color: rgb(57,61,73);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div id="aside-root">
       <el-col :span="4">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple" style="height: calc(100vh - 62px) ">
           <el-menu
-              style="height: 100%"
+              style="height: 100%;"
               default-active="2"
               class="el-menu-vertical-demo"
               background-color="#545c64"
@@ -53,9 +53,13 @@ export default {
 
 <style scoped>
 #aside-root{
-  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+
 }
 el-menu{
   height: 100%;
+  z-index: 1;
 }
 </style>

@@ -1,12 +1,11 @@
 <template>
-  <div id="app">
+  <div id="app" style="height: 100%;">
     <Header></Header>
     <div style="height: 100%;">
       <Aside></Aside>
       <Main></Main>
     </div>
 
-    <Footer></Footer>
   </div>
 </template>
 
